@@ -33,3 +33,15 @@
     <li>create <strong>Routes</strong> array in the module.ts and in imports register it using <strong>RouterModule.forRoot(Routes)</strong></li>
     <li>The objects in the Routes contain path: and component: </li>
 </ol>
+
+<h2 align="center">Dependency Injection in Angular8</h2>
+<ol>
+    <li>Dependency Injection <strong>is built in feature</strong> of Angular</li>
+    <li>Simply put the dependent type in the constructor and use in the class</li>
+</ol>
+
+<h2 align="center">Redirection</h2>
+<ol>
+    <li>So we can redirect from one page to another</li>
+    <li>Simply inject Router in the required .ts file and then call its navigate method to go desired page</li>
+</ol>
