@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit
 {
 
-    username : string = 'Ubaid ur Rehman';
-    password : string = 'test123';
+    private username : string = 'Ubaid ur Rehman';
+    private password : string = 'test123';
+    private isInValid : boolean = false;
 
     constructor() { }
 
@@ -20,6 +21,15 @@ export class LoginComponent implements OnInit
 
     public whenClick() : void 
     {
+        if(this.username === "test123" && this.password === "test123")
+        {
+            this.isInValid = false;
+        }
+        else
+        {
+            this.isInValid = true;
+        }
+
         console.log(this.username);
         console.log(this.password);
     }

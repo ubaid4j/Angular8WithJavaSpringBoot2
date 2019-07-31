@@ -21,3 +21,15 @@
 <ol>
     <li><strong>[(ngModule)]="var"</strong> where var is the value in the .ts file</li>
 </ol>
+
+<h2 align="center">*ngIf</h2>
+<ol>
+    <li><strong>*ngIf="boolean var"</strong> where var is the value in the .ts file</li>
+</ol>
+
+
+<h2 align="center">Routing</h2>
+<ol>
+    <li>create <strong>Routes</strong> array in the module.ts and in imports register it using <strong>RouterModule.forRoot(Routes)</strong></li>
+    <li>The objects in the Routes contain path: and component: </li>
+</ol>
