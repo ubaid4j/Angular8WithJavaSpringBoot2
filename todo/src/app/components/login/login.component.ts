@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit
 {
 
+    username : string = 'Ubaid ur Rehman';
+    password : string = 'test123';
+
     constructor() { }
 
     ngOnInit()
@@ -17,7 +20,8 @@ export class LoginComponent implements OnInit
 
     public whenClick() : void 
     {
-        console.log("Hello g");
+        console.log(this.username);
+        console.log(this.password);
     }
 
 }
