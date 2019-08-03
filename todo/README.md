@@ -45,3 +45,10 @@
     <li>So we can redirect from one page to another</li>
     <li>Simply inject Router in the required .ts file and then call its navigate method to go desired page</li>
 </ol>
+
+<h2 align="center">Path Variable</h2>
+<ol>
+    <li>In app-routing.module.ts change the router path to path:var where var is our variable in the url path</li>
+    <li>Now get path variable using ActivatedRouter [inject it first] and then get the parameter using: -></li>
+    <li>this.ActivatedRouter(instance).snapshot.params['pathvariable name']</li>
+</ol>
