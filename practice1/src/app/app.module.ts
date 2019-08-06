@@ -10,6 +10,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import {MatMenuModule} from '@angular/material';
+import { Data } from './data';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import {MatMenuModule} from '@angular/material';
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [Data],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

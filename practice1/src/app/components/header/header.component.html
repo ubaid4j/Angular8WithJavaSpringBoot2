@@ -2,11 +2,11 @@
 
 	<div class="header-limiter">
 
-		<h1><a href="#">Ubaid<span>Work</span></a></h1>
+		<h1><a href="#">{{name}}<span>Work</span></a></h1>
 
-		<ul>
-			<li><a href="#">Login</a></li>
-			<li><a href="#">Sign up</a></li>
+		<ul *ngIf="login">
+			<li>Welcome {{user}}</li>
+			<li><a href="#">Sign Out</a></li>
 		</ul>
 
 	</div>
