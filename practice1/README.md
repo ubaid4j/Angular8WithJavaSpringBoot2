@@ -9,3 +9,4 @@
     <li><strong>ng add @angular/material</strong></li>
     <li>generate componets (header, footer, login, welcome)</li>
 </ol>
+<h3>7Aug2019 No mood</h3>
