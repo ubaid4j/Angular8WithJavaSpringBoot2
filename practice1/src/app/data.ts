@@ -3,10 +3,19 @@ export class Data
     private name : string;
     private login : boolean;
 
-    constructor()
+    private static instance : Data = null;
+
+    private constructor()
     {
         this.name = "Ubaid"
         this.login = false;
+    }
+
+    public static getInstance() : Data 
+    {
+        if(Data.instance == null)
+            Data.instance = new Data();
+        return Data.instance;
     }
 
     public getName() : string
