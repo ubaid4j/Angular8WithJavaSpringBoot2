@@ -1,1 +1,11 @@
-<p>login works!</p>
+<app-header></app-header>
+    <div id="app1">
+        <label>Name: </label>
+        <input type="text" [(ngModel)]="name"/>
+        <br>
+        <label>Password: </label>
+        <input type="password" [(ngModel)]="password"/>
+        <br>
+        <input type="submit" (click)="actionListener()"/>
+    </div>
+<app-footer></app-footer>

@@ -5,11 +5,20 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit
+{
+    private logo : string = "Ubaid's";
+    private contact : string = "Contact";
+    private about : string = "About";
 
-  constructor() { }
+    constructor()
+    {
 
-  ngOnInit() {
-  }
+    }
+
+    ngOnInit()
+    {
+
+    }
 
 }

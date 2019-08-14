@@ -5,11 +5,16 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit
+{
 
-  constructor() { }
+    private id : string = "Copy Right 2019"
 
-  ngOnInit() {
-  }
+    constructor() { }
+
+    ngOnInit()
+    {
+
+    }
 
 }
