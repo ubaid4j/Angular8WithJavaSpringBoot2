@@ -66,3 +66,15 @@
     <li>used in anchor tag</li>
     <li>simply place name of the path</li>
 </ol>
+
+<h2 align="center">Classes in TypeScript</h2>
+<ol>
+    <li>When we write variables in the constructor it becomes field variables in type script class</li>
+</ol>
+
+<h2 align="center">Pipe</h2>
+<ol>
+    <li>is used to format items</li>
+    <li>expression: object | format</li>
+    <li>Here, I used datePip {{date | date:'medium"}} etc</li>
+</ol>
