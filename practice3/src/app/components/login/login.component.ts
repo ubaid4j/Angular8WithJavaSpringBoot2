@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { invalid } from '@angular/compiler/src/render3/view/util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit
     private password : string;
     private invalid : boolean = false;
 
-    constructor()
+    constructor(private router : Router)
     {
 
     }
@@ -25,11 +26,14 @@ export class LoginComponent implements OnInit
 
     actionListener() : void
     {
-        console.log(this.name);
-        console.log(this.password);
-        if(this.name != "test" || this.password != "test")
+        if(true)
         {
             this.invalid = false;
+            this.router.navigate([this.name]);
+        }
+        else
+        {
+            this.invalid = true;
         }
     }
 

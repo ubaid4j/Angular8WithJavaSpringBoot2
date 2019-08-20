@@ -6,7 +6,7 @@
         <label>Password: </label>
         <input type="password" [(ngModel)]="password"/>
         <span *ngIf="isInvalid()">
-            <h6>You have entered wrong credentials</h6>
+            <span>You have entered wrong credentials</span>
         </span>
         <br>
         <input type="submit" (click)="actionListener()"/>
