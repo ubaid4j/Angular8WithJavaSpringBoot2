@@ -59,3 +59,10 @@
     <li>Expression: *ngFor="let var of vars"</li>
     <li>var will be object in the array, we can use var</li>
 </ol>
+
+<h2 align="center">routerLink</h2>
+<ol>
+    <li>Alternate for href</li>
+    <li>used in anchor tag</li>
+    <li>simply place name of the path</li>
+</ol>
