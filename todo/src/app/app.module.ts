@@ -7,15 +7,17 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { TodosComponent } from './components/todos/todos.component';
 
 
 @NgModule({
-  
+
   declarations: [
     AppComponent,
     WelcomeComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TodosComponent
   ],
   imports: [
     BrowserModule,

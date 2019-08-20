@@ -52,3 +52,10 @@
     <li>Now get path variable using ActivatedRouter [inject it first] and then get the parameter using: -></li>
     <li>this.ActivatedRouter(instance).snapshot.params['pathvariable name']</li>
 </ol>
+
+<h2 align="center">*ngFor</h2>
+<ol>
+    <li>This used for iteration</li>
+    <li>Expression: *ngFor="let var of vars"</li>
+    <li>var will be object in the array, we can use var</li>
+</ol>
