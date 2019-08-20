@@ -8,6 +8,8 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { TodosComponent } from './components/todos/todos.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { TodosComponent } from './components/todos/todos.component';
     WelcomeComponent,
     LoginComponent,
     PageNotFoundComponent,
-    TodosComponent
+    TodosComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
