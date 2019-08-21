@@ -9,15 +9,14 @@ import { Router } from '@angular/router';
 })
 export class LogoutComponent implements OnInit {
 
-    constructor(private router : Router)
+    constructor(private auth : HardCodeAuthService)
     {
 
     }
 
     ngOnInit()
     {
-        sessionStorage.removeItem(HardCodeAuthService.AUTH);
-        this.router.navigate(["login"])
+        this.auth.logout();
     }
 
 }

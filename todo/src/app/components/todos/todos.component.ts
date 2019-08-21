@@ -55,10 +55,7 @@ export class TodosComponent implements OnInit
 
     ngOnInit()
     {
-        if(!this.auth.isAuth())
-        {
-            this.router.navigate(["login"])
-        }
+
     }
 
 }

@@ -93,3 +93,12 @@
     <li>is dependant on browser</li>
     <li>as soon as browser closed, session will destory</li>
 </ol>
+
+<h2 align="center">CanActivate Interface</h2>
+<ol>
+    <li>We create a routeGaurd service and implement this service with CanActivate</li>
+    <li>We implement the method and return true if user is logged in</li>
+    <li>otherwise false</li>
+    <li>we can redirect our page to login page if user is not logged in</li>
+    <li>Then we add canActivate field in our path in app-routing-module.ts</li>
+</ol>

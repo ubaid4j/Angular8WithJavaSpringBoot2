@@ -10,6 +10,7 @@ import { HardCodeAuthService } from 'src/app/services/auth/hard-code-auth.servic
 export class HeaderComponent implements OnInit
 {
     private isLoggedIn : boolean = false;
+    private user : string = "";
 
     constructor(private auth : HardCodeAuthService)
     {
@@ -18,7 +19,7 @@ export class HeaderComponent implements OnInit
 
     ngOnInit()
     {
-        console.log("Initialization");
+        this.user = this.auth.getCurrentUser();
         this.isLoggedIn = this.auth.isAuth();
     }
 }

@@ -26,5 +26,13 @@ export class HardCodeAuthService
         return (sessionStorage.getItem(HardCodeAuthService.AUTH) != null);
     }
 
+    public logout() : void
+    {
+        sessionStorage.removeItem(HardCodeAuthService.AUTH);
+    }
 
+    public getCurrentUser() : string
+    {
+        return sessionStorage.getItem(HardCodeAuthService.AUTH);
+    }
 }
