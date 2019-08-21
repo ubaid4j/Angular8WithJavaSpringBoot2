@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { TodosComponent } from './components/todos/todos.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FooterComponent } from './components/footer/footer.component';
     PageNotFoundComponent,
     TodosComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

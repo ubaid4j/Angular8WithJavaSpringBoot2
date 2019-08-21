@@ -63,7 +63,8 @@
 <h2 align="center">routerLink</h2>
 <ol>
     <li>Alternate for href</li>
-    <li>used in anchor tag</li>
+    <li>It is not refreshed the page while href load whole page</li>
+    <li>ud in anchor tag</li>
     <li>simply place name of the path</li>
 </ol>
 
@@ -77,4 +78,18 @@
     <li>is used to format items</li>
     <li>expression: object | format</li>
     <li>Here, I used datePip {{date | date:'medium"}} etc</li>
+</ol>
+
+<h2 align="center">Service</h2>
+<ol>
+    <li>Service is class which is injectable in root</li>
+    <li>so we can get at any level this class</li>
+    <li>ng generate service from/path/to</li>
+</ol>
+
+<h2 align="center">Session Storage</h2>
+<ol>
+    <li>We can store any info in key value pair in our session</li>
+    <li>is dependant on browser</li>
+    <li>as soon as browser closed, session will destory</li>
 </ol>

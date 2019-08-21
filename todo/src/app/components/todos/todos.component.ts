@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HardCodeAuthService } from 'src/app/services/auth/hard-code-auth.service';
+import { Router } from '@angular/router';
 
 export class Todo
 {
@@ -45,14 +47,18 @@ export class TodosComponent implements OnInit
         // }
     ]
 
-    constructor()
+    constructor(private auth : HardCodeAuthService,
+        private router : Router)
     {
 
     }
 
     ngOnInit()
     {
-
+        if(!this.auth.isAuth())
+        {
+            this.router.navigate(["login"])
+        }
     }
 
 }

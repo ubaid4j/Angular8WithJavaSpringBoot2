@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { TodosComponent } from './components/todos/todos.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 const routes: Routes = [
@@ -11,8 +12,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'welcome/:name', component: WelcomeComponent },
   { path: 'todos', component: TodosComponent },
+  { path: 'logout', component: LogoutComponent },
   { path: '**', component: PageNotFoundComponent }
-
 ];
 
 @NgModule({

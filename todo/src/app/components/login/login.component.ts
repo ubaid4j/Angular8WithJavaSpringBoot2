@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HardCodeAuthService } from 'src/app/services/auth/hard-code-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +10,12 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit
 {
 
-    private username : string = 'Ubaid ur Rehman';
+    private username : string = 'ubaid';
     private password : string = 'test123';
     private isInValid : boolean = false;
 
-    constructor(private router:Router)
+    constructor(private router:Router,
+        private auth : HardCodeAuthService)
     {
 
     }
@@ -23,12 +25,18 @@ export class LoginComponent implements OnInit
 
     }
 
-    public whenClick() : void 
+    public whenClick() : void
     {
-        if(this.username === "test123" && this.password === "test123")
+        console.log("Before: isAuth: " + sessionStorage.getItem(HardCodeAuthService.AUTH));
+        if(this.auth.authenticate(this.username, this.password))
         {
             this.isInValid = false;
             this.router.navigate(['welcome', this.username]);
+
+            //storing authUser in the browser session
+            sessionStorage.setItem(HardCodeAuthService.AUTH, this.username);
+            console.log("After: isAuth: " + sessionStorage.getItem(HardCodeAuthService.AUTH));
+
         }
         else
         {
@@ -38,5 +46,4 @@ export class LoginComponent implements OnInit
         console.log(this.username);
         console.log(this.password);
     }
-
 }
