@@ -2,4 +2,18 @@
 <div class="container">
     <p>Welcome {{name}} in our awesome app. You can manage your todos <a routerLink="/todos">here</a></p>
 </div>
+
+<div class="container">
+    <button class="btn btn-primary" (click)="getMessage()">Get Message from service</button>
+</div>
+
+<div class="container" *ngIf="error">
+        <h3>There is an error, the error message is : </h3>
+        <p>{{error}}</p>
+</div>
+
+<div class="container" *ngIf="message">
+    <h2>The message from the service is : </h2>
+    <p>{{message}}</p>
+</div>
 <app-footer></app-footer>
