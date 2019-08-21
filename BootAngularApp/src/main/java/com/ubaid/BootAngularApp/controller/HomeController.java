@@ -1,5 +1,6 @@
 package com.ubaid.BootAngularApp.controller;
 
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +23,8 @@ public class HomeController
 	@GetMapping("helloWorldBean")
 	public HelloWorldBean hellowWorldBean()
 	{
-		return new HelloWorldBean("Hello World");
+		throw new RuntimeException("Some unknown error -- Contact Support");
+//		return new HelloWorldBean("Hello World");
 	}
 	
 	@GetMapping("/helloWorld/path/{name}")
