@@ -1,6 +1,7 @@
 package com.ubaid.BootAngularApp.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,5 +21,11 @@ public class HomeController
 	public HelloWorldBean hellowWorldBean()
 	{
 		return new HelloWorldBean("Hello World");
+	}
+	
+	@GetMapping("/helloWorld/path/{name}")
+	public String PathVaraible(@PathVariable String name)
+	{
+		return String.format("Welcome %s here", name);
 	}
 }
