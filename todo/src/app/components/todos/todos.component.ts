@@ -60,12 +60,17 @@ export class TodosComponent implements OnInit
     ngOnInit()
     {
         this.todoService.getAllTodos(this.auth.getCurrentUser()).subscribe(
-            response => this.handleResponse(response)
+            response => {
+                let todo = response as Todo[];
+                this.handleResponse(todo);
+            }
         );
     }
 
-    private handleResponse(res : any)
+    private handleResponse(res : Todo[])
     {
+        console.log(res);
+        console.log(typeof(res));
         this.todos = res;
     }
 

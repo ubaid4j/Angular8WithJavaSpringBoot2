@@ -117,3 +117,9 @@
     <li>use `expression`</li>
     <li>e.g. `path/to/${name}`</li>
 </ol>
+
+<h2 align="center">Upcasting</h2>
+<ol>
+    <li>let todo = response as Todo[]</li>
+    <li><strong>as</strong> keyword is used for upcasting</li>
+</ol>
