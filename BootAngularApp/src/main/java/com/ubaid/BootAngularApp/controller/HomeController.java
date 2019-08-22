@@ -23,13 +23,14 @@ public class HomeController
 	@GetMapping("helloWorldBean")
 	public HelloWorldBean hellowWorldBean()
 	{
-		throw new RuntimeException("Some unknown error -- Contact Support");
-//		return new HelloWorldBean("Hello World");
+//		throw new RuntimeException("Some unknown error -- Contact Support");
+		return new HelloWorldBean("Hello World");
 	}
 	
 	@GetMapping("/helloWorld/path/{name}")
-	public String PathVaraible(@PathVariable String name)
+	public HelloWorldBean PathVaraible(@PathVariable String name)
 	{
-		return String.format("Welcome %s here", name);
+//		return new HelloWorldBean(String.format("Welcome %s here", name));
+		throw new RuntimeException("Unknow Error happens");
 	}
 }
