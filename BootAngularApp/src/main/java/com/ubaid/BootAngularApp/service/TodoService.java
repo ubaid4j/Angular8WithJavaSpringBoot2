@@ -19,4 +19,17 @@ public class TodoService implements TService
 	{
 		return todoDAO.getAllTodos(userName);
 	}
+
+	@Override
+	public Todo deleteTodo(String username, int id)
+	{
+		return todoDAO.deleteTodo(username, id);
+	}
+
+	@Override
+	public Todo getTodo(String username, int id)
+	{
+		return todoDAO.getTodo(username, id);
+	}
+	
 }

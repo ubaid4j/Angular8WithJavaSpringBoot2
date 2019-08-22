@@ -35,6 +35,28 @@ public class TodoDAO implements TDAO
 		return todos;
 	}
 
+
+	@Override
+	public Todo deleteTodo(String username, int id)
+	{
+		Todo todo = getTodo(username, id);
+		if(todos.remove(todo))
+			return todo;
+		return null;
+	}
+
+
+	@Override
+	public Todo getTodo(String username, int id)
+	{
+		for(Todo todo : todos)
+		{
+			if(todo.getId() == id)
+				return todo;
+		}
+		return null;
+	}
+
 	
 	
 }
