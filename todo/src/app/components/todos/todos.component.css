@@ -1,3 +1,7 @@
 table, tr, th, td{
     border: 1px solid green;
 }
+
+.container{
+    margin-bottom: 50px;
+}

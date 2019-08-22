@@ -18,6 +18,11 @@ export class DataServiceService
         return this.http.get<HelloWorldBean>("http://localhost:8080/helloWorldBean/");
     }
 
+    public executeHelloWorldWithPathVariable(userName : string) : Observable<Object>
+    {
+        return this.http.get<String>(`http://localhost:8080/helloWorld/path/${userName}`);
+    }
+
 }
 
 export class HelloWorldBean

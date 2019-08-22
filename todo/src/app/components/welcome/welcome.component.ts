@@ -31,20 +31,35 @@ export class WelcomeComponent implements OnInit
         this.dataService.executeHelloWorldService().subscribe(
             response => this.handleSuccessFulResponse(response),
             error => this.handleError(error)
-        )
+        );
         console.log("Ending getMessage() at welcome component");
         return null;
     }
 
+    private getMessageWithPathVariable() : void
+    {
+        console.log("Executing getMessage() at welcome component")
+        this.dataService.executeHelloWorldWithPathVariable(this.name).subscribe(
+            response => this.handleSuccessFulResponse(response),
+            error => this.handleError(error)
+        );
+        console.log("Ending getMessage() at welcome component");
+
+    }
+
     private handleSuccessFulResponse(response : any) : void
     {
+        this.error = null;
         this.message = response.message;
-        // console.log(response.message);
+        console.log(response);
     }
 
     private handleError(error : any) : void
     {
+        this.message = null;
         this.error = error.error.message;
+        console.log(error);
+
     }
 
 }

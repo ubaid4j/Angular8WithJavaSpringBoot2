@@ -102,3 +102,18 @@
     <li>we can redirect our page to login page if user is not logged in</li>
     <li>Then we add canActivate field in our path in app-routing-module.ts</li>
 </ol>
+
+<h2 align="center">HttpClient</h2>
+<ol>
+    <li>To get data from the web services, we use HttpCleint</li>
+    <li>Import HttpClientModule in app.module.ts</li>
+    <li>Inject HttpClient newly made class in data folder</li>
+    <li>and then using get method of httpClient return the Observable</li>
+    <li>In the component class, use this observales, as success reponse, error respose etc</li>
+</ol>
+
+<h2 align="center">Tick Trick</h2>
+<ol>
+    <li>use `expression`</li>
+    <li>e.g. `path/to/${name}`</li>
+</ol>
