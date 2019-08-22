@@ -31,5 +31,11 @@ public class TodoService implements TService
 	{
 		return todoDAO.getTodo(username, id);
 	}
+
+	@Override
+	public Todo save(String username, Todo todo)
+	{
+		return todoDAO.save(username, todo);
+	}
 	
 }

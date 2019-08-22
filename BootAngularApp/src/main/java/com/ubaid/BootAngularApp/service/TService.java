@@ -9,4 +9,5 @@ public interface TService
 	public List<Todo> getAllTodos(String username);
 	public Todo deleteTodo(String username, int id);
 	public Todo getTodo(String username, int id);
+	public Todo save(String username, Todo todo);
 }

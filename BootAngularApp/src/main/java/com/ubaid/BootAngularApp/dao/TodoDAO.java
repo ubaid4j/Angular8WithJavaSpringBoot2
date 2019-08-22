@@ -57,6 +57,22 @@ public class TodoDAO implements TDAO
 		return null;
 	}
 
-	
-	
+	@Override
+	public Todo save(String username, Todo todo)
+	{
+		if(todo.getId() == -1 || todo.getId() == 0)
+		{
+			//will add
+			todo.setId(++counter);
+			todos.add(todo);
+			return todo;
+		}
+		else
+		{
+			//will update
+			deleteTodo(username, todo.getId());
+			todos.add(todo);
+		}
+		return todos.get(todo.getId());
+	}	
 }

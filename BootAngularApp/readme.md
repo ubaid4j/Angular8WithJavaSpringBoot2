@@ -14,5 +14,4 @@
     <li>On update or delete request, we may enter ReponseEntity</li>
     <li>We can return ResponseEntity.ok().build() on success or</li>
     <li>ResponseEntity.notFound().build() when item is not present etc</li>
-
 </ol>
