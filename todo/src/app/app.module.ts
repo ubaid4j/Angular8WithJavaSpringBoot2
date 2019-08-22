@@ -12,6 +12,7 @@ import { TodosComponent } from './components/todos/todos.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { TodoComponent } from './components/todo/todo.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     TodosComponent,
     HeaderComponent,
     FooterComponent,
-    LogoutComponent
+    LogoutComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,

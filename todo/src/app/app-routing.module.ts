@@ -6,12 +6,14 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { TodosComponent } from './components/todos/todos.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { RouteGaurdService } from './services/auth/route-gaurd.service';
+import { TodoComponent } from './components/todo/todo.component';
 
 
 const routes: Routes = [
     { path: '', component: LoginComponent },
     { path: 'login', component: LoginComponent },
     { path: 'welcome/:name', component: WelcomeComponent, canActivate: [RouteGaurdService] },
+    { path: 'todos/:id', component: TodoComponent, canActivate: [RouteGaurdService]},
     { path: 'todos', component: TodosComponent, canActivate: [RouteGaurdService] },
     { path: 'logout', component: LogoutComponent, canActivate: [RouteGaurdService] },
     { path: '**', component: PageNotFoundComponent, canActivate: [RouteGaurdService] }

@@ -23,32 +23,9 @@ export class Todo
 })
 export class TodosComponent implements OnInit
 {
-    // private todo : object = {
-    //     id : 1,
-    //     desc : "Learn JSON"
-    // }
-
-    // private todos : object = [
-
-    //     new Todo(1, "Go to Market", false, new Date()),
-    //     new Todo(2, "Go to School", false, new Date()),
-    //     new Todo(3, "Sleep Time", false, new Date()),
-    //     new Todo(4, "Go to d-watson", false, new Date())
-    //     // {
-    //     //     id : 1,
-    //     //     desc : "Go to Market"
-    //     // },
-    //     // {
-    //     //     id : 2,
-    //     //     desc : "Go to School"
-    //     // },
-    //     // {
-    //     //     id : 10,
-    //     //     desc: "Sleep Time"
-    //     // }
-    // ]
 
     private todos : Todo[];
+    private info : string = null;
 
     constructor(private auth : HardCodeAuthService,
         private router : Router,
@@ -58,6 +35,11 @@ export class TodosComponent implements OnInit
     }
 
     ngOnInit()
+    {
+        this.refresh();
+    }
+
+    private refresh() : void
     {
         this.todoService.getAllTodos(this.auth.getCurrentUser()).subscribe(
             response => {
@@ -69,9 +51,32 @@ export class TodosComponent implements OnInit
 
     private handleResponse(res : Todo[])
     {
-        console.log(res);
-        console.log(typeof(res));
         this.todos = res;
+    }
+
+    private deleteTodo(id : number) : void
+    {
+        this.todoService.deleteTodo(this.auth.getCurrentUser(), id).subscribe(
+            success => {
+                this.refresh();
+                this.info = `Todo of id number ${id} successfully deleted`;
+                this.dropInfo();
+            }
+        )
+    }
+
+    private dropInfo() : void
+    {
+        setTimeout(function()
+        {
+            this.info = null;
+            console.log("drop info");
+        }, 5000);
+    }
+
+    private udpate(id : number) : void
+    {
+        this.router.navigate(["todos", id])
     }
 
 }

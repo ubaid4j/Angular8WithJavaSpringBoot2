@@ -123,3 +123,12 @@
     <li>let todo = response as Todo[]</li>
     <li><strong>as</strong> keyword is used for upcasting</li>
 </ol>
+
+<h2 align="center">[(ngModel)] explanation</h2>
+<ol>
+    <li>[(ngModel)] can be devided in: </li>
+    <li>[ngModel] = "var" and</li>
+    <li>(ngModelChange) = "var = $event"</li>
+    <li>For some instance if, ts compiler produce error on [(ngModel)] then we can split as above mentioned</li>
+</ol>
+
