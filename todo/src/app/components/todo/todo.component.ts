@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Todo } from '../todos/todos.component';
 import { TodoService } from 'src/app/services/todoData/todo.service';
 import { HardCodeAuthService } from 'src/app/services/auth/hard-code-auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo',
@@ -12,11 +12,13 @@ import { ActivatedRoute } from '@angular/router';
 export class TodoComponent implements OnInit
 {
     private todo: Todo;
+    private buttonName : string = "Update";
 
     constructor(
         private todoSerive : TodoService,
         private auth : HardCodeAuthService,
-        private route : ActivatedRoute
+        private route : ActivatedRoute,
+        private router : Router
     )
     {
 
@@ -25,7 +27,16 @@ export class TodoComponent implements OnInit
     ngOnInit()
     {
         this.todo = new Todo(null, null, null, null);
-        this.getTodo(this.auth.getCurrentUser(), this.route.snapshot.params["id"]);
+        let id = this.route.snapshot.params["id"];
+
+        if(id == -1)
+        {
+            this.buttonName = "Create";
+        }
+        else
+        {
+            this.getTodo(this.auth.getCurrentUser(), id);
+        }
     }
 
     private getTodo(username : string, id : number) : void
@@ -40,12 +51,25 @@ export class TodoComponent implements OnInit
 
     private handleRespose(todo : Todo) : void
     {
-        console.log(todo);
         this.todo = todo;
     }
 
     private log() : void
     {
+    }
+
+    private save() : void
+    {
         console.log(this.todo);
+        console.log(`User ${this.auth.getCurrentUser()}`)
+        this.todoSerive.save(this.auth.getCurrentUser(), this.todo).subscribe(
+            response => {
+                console.log(response);
+                this.router.navigate(["todos"]);
+            },
+            error => {
+                console.log(error);
+            }
+        )
     }
 }

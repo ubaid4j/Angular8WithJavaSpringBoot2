@@ -79,4 +79,8 @@ export class TodosComponent implements OnInit
         this.router.navigate(["todos", id])
     }
 
+    private add() : void
+    {
+        this.router.navigate(["todos", -1])
+    }
 }

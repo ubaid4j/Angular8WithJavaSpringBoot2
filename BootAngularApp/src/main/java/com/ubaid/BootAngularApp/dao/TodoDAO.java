@@ -64,6 +64,7 @@ public class TodoDAO implements TDAO
 		{
 			//will add
 			todo.setId(++counter);
+			todo.setUserName(username);
 			todos.add(todo);
 			return todo;
 		}
@@ -72,7 +73,7 @@ public class TodoDAO implements TDAO
 			//will update
 			deleteTodo(username, todo.getId());
 			todos.add(todo);
+			return todo;
 		}
-		return todos.get(todo.getId());
 	}	
 }

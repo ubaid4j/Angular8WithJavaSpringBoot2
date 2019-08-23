@@ -28,4 +28,18 @@ export class TodoService
         return this.http.get(`http://localhost:8080/users/ubaid/todos/${id}`);
         // return null;
     }
+
+    public save(userName : string, todo : Todo) : Observable<Object>
+    {
+        if(todo.id == null)
+        {
+            console.log(`Post Mapping`);
+            return this.http.post(`http://localhost:8080/users/${userName}/todos`, todo);
+        }
+        else
+        {
+            console.log(`Put Mapping`);
+            return this.http.put(`http://localhost:8080/users/${userName}/todos`, todo);
+        }
+    }
 }

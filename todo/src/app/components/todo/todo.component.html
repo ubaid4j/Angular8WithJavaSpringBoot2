@@ -12,6 +12,6 @@
             placeholder="Enter Target Date"
             (click)="log()">
     </div>
-    <button type="submit" class="btn btn-primary">Add</button>
+    <button (click)="save()" type="submit" class="btn btn-primary">{{buttonName}}</button>
 </div>
 <app-footer></app-footer>
