@@ -132,3 +132,25 @@
     <li>For some instance if, ts compiler produce error on [(ngModel)] then we can split as above mentioned</li>
 </ol>
 
+
+<h2 align="center">Form Validation</h2>
+<ol>
+    <li>We can include form tag and then we include (ngSubmit)="methodName()" stead in submit button</li>
+    <ol>
+        <li>The name of all form inputs should have name</li>
+    </ol>
+    <li>Template Variable</li>
+    <ol>
+        <li>We can add #templateName = "ngModel" in inputs field and</li>
+        <li>We can add #templateName = "ng-form" in form tag</li>
+        <li>We can use these template variables in expressions</li>
+    </ol>
+    <li>Validation</li>
+    <ol>
+        <li>.ng-invalid is class we can use in css to indicate if something is invalid</li>
+        <li>There are some more validation tags such as `minlenght`</li>
+        <li>We can use tempalteVariable to show alerts if something is invalid</li>
+    </ol>
+    <li>For some instance if, ts compiler produce error on [(ngModel)] then we can split as above mentioned</li>
+</ol>
+

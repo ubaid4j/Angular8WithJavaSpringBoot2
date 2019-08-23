@@ -1,17 +1,34 @@
 <app-header></app-header>
-<div class="container">
-    <div class="form-group">
-        <label for="desc">Description</label>
-        <input [(ngModel)]=todo.desc type="text" class="form-control" id="desc" placeholder="Enter Todo">
+<form #todoForm="ngForm" (ngSubmit)="!todoForm.invalid && save()">
+    <div class="container">
+
+        <div class="alert alert-warning" role="alert" *ngIf="todoForm.invalid && todoForm.dirty">
+            Form contents are not valid
+        </div>
+
+        <div class="alert alert-warning" role="alert" *ngIf="first_input.invalid && first_input.dirty">
+            Please Write description
+        </div>
+
+        <div class="alert alert-warning" role="alert" *ngIf="date_input.invalid && date_input.dirty">
+            Please Enter date
+        </div>
+
+
+        <div class="form-group">
+            <label for="desc" name="desc_label">Description</label>
+            <input [(ngModel)]=todo.desc type="text" class="form-control" id="desc" placeholder="Enter Todo"
+                name="desc_input" required="required" minlength="5" #first_input="ngModel">
+        </div>
+
+        <div class="form-group">
+            <label for="targetDate" name="date_label">Date</label>
+            <input [ngModel]="todo.targetDate|date:'yyyy-MM-dd'" (ngModelChange)="todo.targetDate = $event" type="date"
+                class="form-control" id="targetDate" placeholder="Enter Target Date" (click)="log()" name="date_input"
+                required="required" #date_input="ngModel">
+        </div>
+
+        <button type="submit" class="btn btn-primary">{{buttonName}}</button>
     </div>
-    <div class="form-group">
-        <label for="targetDate">Date</label>
-        <input [ngModel]="todo.targetDate|date:'yyyy-MM-dd'"
-            (ngModelChange)="todo.targetDate = $event"
-            type="date" class="form-control" id="targetDate"
-            placeholder="Enter Target Date"
-            (click)="log()">
-    </div>
-    <button (click)="save()" type="submit" class="btn btn-primary">{{buttonName}}</button>
-</div>
+</form>
 <app-footer></app-footer>
