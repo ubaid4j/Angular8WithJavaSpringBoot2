@@ -176,3 +176,14 @@
     <li>return => next.handle(req)</li>
     <li>Add {provide : HTTP_INTERCEPTORS, useClass : HttpIntercepterService, multi : true} in providers in app.module.ts</li>
 </ol>
+
+<h2 align="center">Angular Authentication Service</h2>
+<ol>
+    <li>Create a service </li>
+    <li>Then create a get request give the auth header</li>
+    <ol>
+        <li>Use pipe with get request (and then map to set sessionStorge) 'check out the basicAuthService</li>
+    </ol>
+    <li>In the login component, execute the service, if success then process to welcome page</li>
+    <li>otherwise give invalid credentials</li>
+</ol>

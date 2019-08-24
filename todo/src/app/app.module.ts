@@ -35,7 +35,9 @@ import { HttpIntercepterService } from './services/http/http-intercepter.service
     FormsModule,
     HttpClientModule
   ],
-  providers: [{provide : HTTP_INTERCEPTORS, useClass : HttpIntercepterService, multi : true}],
+  providers: [
+    //   {provide : HTTP_INTERCEPTORS, useClass : HttpIntercepterService, multi : true}
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

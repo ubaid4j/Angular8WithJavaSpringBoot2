@@ -20,21 +20,8 @@ export class DataServiceService
 
     public executeHelloWorldWithPathVariable(userName : string) : Observable<Object>
     {
-        let basicAuth = this.createBasicAuthHeaderString();
-        let headers = new HttpHeaders().append('Authorization', basicAuth);
-        return this.http.get<String>(`http://localhost:8080/helloWorld/path/${userName}`, {headers});
+        return this.http.get<String>(`http://localhost:8080/helloWorld/path/${userName}`);
     }
-
-
-    public createBasicAuthHeaderString() : string
-    {
-        let userName = "ubaid";
-        let password = "test123";
-        let authString = "Basic " + window.btoa(userName + ":" + password);
-        console.log(authString);
-        return authString;
-    }
-
 }
 
 export class HelloWorldBean
