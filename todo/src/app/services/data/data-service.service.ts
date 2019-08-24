@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -20,7 +20,19 @@ export class DataServiceService
 
     public executeHelloWorldWithPathVariable(userName : string) : Observable<Object>
     {
-        return this.http.get<String>(`http://localhost:8080/helloWorld/path/${userName}`);
+        let basicAuth = this.createBasicAuthHeaderString();
+        let headers = new HttpHeaders().append('Authorization', basicAuth);
+        return this.http.get<String>(`http://localhost:8080/helloWorld/path/${userName}`, {headers});
+    }
+
+
+    public createBasicAuthHeaderString() : string
+    {
+        let userName = "ubaid";
+        let password = "test123";
+        let authString = "Basic " + window.btoa(userName + ":" + password);
+        console.log(authString);
+        return authString;
     }
 
 }

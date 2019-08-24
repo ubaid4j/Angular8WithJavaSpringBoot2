@@ -154,3 +154,25 @@
     <li>For some instance if, ts compiler produce error on [(ngModel)] then we can split as above mentioned</li>
 </ol>
 
+<h2 align="center">Authentication</h2>
+<ol>
+    <li>Basic Authentication</li>
+    <ol>
+        <li>For basic authentication we have to creaet a Authorization header</li>
+        <li>Create a method which return a Auth String having format `Basic username:password`</li>
+        <li>The username:password should be in 64 bit string. Use window.btao to convert them in 64 bit</li>
+        <li>Create header using let header = new HttpHeader({'Authorizaton' : authString})</li>
+        <li>Put this header as object in the getReqest after the url</li>
+    </ol>
+</ol>
+
+<h2 align="center">HTTP Intercepter</h2>
+<ol>
+    <li>Create a Service and implement it with HttpInterceptor</li>
+    <li>Implement the method and, first update the request with header using: </li>
+    <ol>
+        <li>req = req.clone({headers})</li>
+    </ol>
+    <li>return => next.handle(req)</li>
+    <li>Add {provide : HTTP_INTERCEPTORS, useClass : HttpIntercepterService, multi : true} in providers in app.module.ts</li>
+</ol>
