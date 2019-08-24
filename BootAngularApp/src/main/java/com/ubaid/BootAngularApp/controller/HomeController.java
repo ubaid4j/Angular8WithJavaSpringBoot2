@@ -30,7 +30,7 @@ public class HomeController
 	@GetMapping("/helloWorld/path/{name}")
 	public HelloWorldBean PathVaraible(@PathVariable String name)
 	{
-//		return new HelloWorldBean(String.format("Welcome %s here", name));
-		throw new RuntimeException("Unknow Error happens");
+		return new HelloWorldBean(String.format("Welcome %s here", name));
+//		throw new RuntimeException("Unknow Error happens");
 	}
 }
