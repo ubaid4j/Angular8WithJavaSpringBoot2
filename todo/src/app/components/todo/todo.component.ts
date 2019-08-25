@@ -3,6 +3,7 @@ import { Todo } from '../todos/todos.component';
 import { TodoService } from 'src/app/services/todoData/todo.service';
 import { HardCodeAuthService } from 'src/app/services/auth/hard-code-auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BasicAuthenticationService } from 'src/app/services/auth/basic-authentication.service';
 
 @Component({
   selector: 'app-todo',
@@ -16,7 +17,7 @@ export class TodoComponent implements OnInit
 
     constructor(
         private todoSerive : TodoService,
-        private auth : HardCodeAuthService,
+        private auth : BasicAuthenticationService,
         private route : ActivatedRoute,
         private router : Router
     )
@@ -35,7 +36,7 @@ export class TodoComponent implements OnInit
         }
         else
         {
-            this.getTodo(this.auth.getCurrentUser(), id);
+            this.getTodo(this.auth.getAuthUser(), id);
         }
     }
 
@@ -61,8 +62,8 @@ export class TodoComponent implements OnInit
     private save() : void
     {
         console.log(this.todo);
-        console.log(`User ${this.auth.getCurrentUser()}`)
-        this.todoSerive.save(this.auth.getCurrentUser(), this.todo).subscribe(
+        console.log(`User ${this.auth.getAuthUser()}`)
+        this.todoSerive.save(this.auth.getAuthUser(), this.todo).subscribe(
             response => {
                 console.log(response);
                 this.router.navigate(["todos"]);

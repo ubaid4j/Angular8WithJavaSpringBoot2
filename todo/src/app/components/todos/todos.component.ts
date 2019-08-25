@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HardCodeAuthService } from 'src/app/services/auth/hard-code-auth.service';
 import { Router } from '@angular/router';
 import { TodoService } from 'src/app/services/todoData/todo.service';
+import { BasicAuthenticationService } from 'src/app/services/auth/basic-authentication.service';
 
 export class Todo
 {
@@ -27,7 +28,7 @@ export class TodosComponent implements OnInit
     private todos : Todo[];
     private info : string = null;
 
-    constructor(private auth : HardCodeAuthService,
+    constructor(private auth : BasicAuthenticationService,
         private router : Router,
         private todoService : TodoService)
     {
@@ -41,7 +42,7 @@ export class TodosComponent implements OnInit
 
     private refresh() : void
     {
-        this.todoService.getAllTodos(this.auth.getCurrentUser()).subscribe(
+        this.todoService.getAllTodos(this.auth.getAuthUser()).subscribe(
             response => {
                 let todo = response as Todo[];
                 this.handleResponse(todo);
@@ -56,7 +57,7 @@ export class TodosComponent implements OnInit
 
     private deleteTodo(id : number) : void
     {
-        this.todoService.deleteTodo(this.auth.getCurrentUser(), id).subscribe(
+        this.todoService.deleteTodo(this.auth.getAuthUser(), id).subscribe(
             success => {
                 this.refresh();
                 this.info = `Todo of id number ${id} successfully deleted`;

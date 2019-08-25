@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HardCodeAuthService } from 'src/app/services/auth/hard-code-auth.service';
-import { BasicAuthenticationService } from 'src/app/services/auth/basic-authentication.service';
+import { BasicAuthenticationService, AUTHUSER, AUTHTOKEN } from 'src/app/services/auth/basic-authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -44,18 +44,34 @@ export class LoginComponent implements OnInit
         // {
         //     this.isInValid = true;
         // }
+        console.log(this.username);
+        console.log(this.password);
 
-            this.basicAuth.executeAuthenticationService(this.username, this.password).subscribe(
-                data => {
-                    this.isInValid = false;
-                    this.router.navigate(['welcome', this.username]);
-                    console.log(data);
-                    console.log("After: isAuth: " + sessionStorage.getItem(HardCodeAuthService.AUTH));
-                },
-                error => {
-                    this.isInValid = true;
-                }
-            );
+        //TEST
+        // this.giveAuth();
 
+        this.basicAuth.executeAuthenticationService(this.username, this.password).subscribe(
+            data => {
+                console.log(data);
+                this.isInValid = false;
+                this.router.navigate(['welcome', this.username]);
+                console.log("After: isAuth: " + sessionStorage.getItem(AUTHUSER));
+            },
+            error => {
+                console.log(error);
+                this.isInValid = true;
+            }
+        );
     }
+
+    // private giveAuth()
+    // {
+    //     // console.log(data);
+    //     this.isInValid = false;
+    //     this.router.navigate(['welcome', this.username]);
+    //     console.log("After: isAuth: " + sessionStorage.getItem(AUTHUSER));
+    //     sessionStorage.setItem(AUTHUSER, this.username);
+    //     sessionStorage.setItem(AUTHTOKEN, this.basicAuth.createBasicAuthHeaderString(this.username, this.password));
+
+    // }
 }
