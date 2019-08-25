@@ -59,3 +59,11 @@
     <li>Create data.sql file and insert some values</li>
 </ol>
 
+<h2 align="center">Spring Data (H2 Database)</h2>
+<ol>
+    <li>So, we can create custom native queries</li>
+    <li>For update and delete and create, return type is null or int</li>
+    <li>and they require transaction management hint[use @Transactional annotation at service]</li>
+    <li>For more info: check out JPADAO</li>
+</ol>
+
