@@ -26,7 +26,7 @@ export class TodoService
 
     public getTodo(userName : string, id : number) : Observable<Object>
     {
-        return this.http.get(`${API_URL}/users/ubaid/todos/${id}`);
+        return this.http.get(`${API_URL}/users/${userName}/todos/${id}`);
         // return null;
     }
 
