@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HardCodeAuthService } from 'src/app/services/auth/hard-code-auth.service';
 import { BasicAuthenticationService, AUTHUSER, AUTHTOKEN } from 'src/app/services/auth/basic-authentication.service';
+import { JwtAuthService } from 'src/app/services/auth/jwt-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit
 
     constructor(private router:Router,
         private auth : HardCodeAuthService,
-        private basicAuth : BasicAuthenticationService)
+        private basicAuth : BasicAuthenticationService,
+        private jwtAuth : JwtAuthService)
     {
 
     }
@@ -50,7 +52,7 @@ export class LoginComponent implements OnInit
         //TEST
         // this.giveAuth();
 
-        this.basicAuth.executeAuthenticationService(this.username, this.password).subscribe(
+        this.jwtAuth.auth(this.username, this.password).subscribe(
             data => {
                 console.log(data);
                 this.isInValid = false;

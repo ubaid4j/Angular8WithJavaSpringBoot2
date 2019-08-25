@@ -18,7 +18,6 @@ export class HttpIntercepterService implements HttpInterceptor
     {
         if(this.basicAuth.isUserLoggedIn())
         {
-            console.log("-------------------intercept true--------------------")
             let headers = new HttpHeaders({
                 'Authorization' : this.basicAuth.getAuthToken()
             });
@@ -27,8 +26,6 @@ export class HttpIntercepterService implements HttpInterceptor
             });
 
         }
-        console.log("----------------------intercet return------------------");
-        console.log(req);
         return next.handle(req);
     }
 }
