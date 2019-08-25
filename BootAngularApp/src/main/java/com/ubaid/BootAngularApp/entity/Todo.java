@@ -2,14 +2,33 @@ package com.ubaid.BootAngularApp.entity;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Todo
 {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String userName;
 	private String desc;
 	private Date targetDate;
 	private boolean isDone;
 	
+	public Todo()
+	{
+		
+	}
+	
+	@Override
+	public String toString() {
+		return "Todo [id=" + id + ", userName=" + userName + ", desc=" + desc + ", targetDate=" + targetDate
+				+ ", isDone=" + isDone + "]";
+	}
+
 	public Todo(int id, String userName, String desc, Date targetDate, boolean isDone) {
 		this.id = id;
 		this.userName = userName;

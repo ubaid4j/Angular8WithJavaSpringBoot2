@@ -39,8 +39,23 @@
 		<li>All other than OPTIONS request, we have to do authentication using anyRequest().authenticated()</li>
 		<li>After that, we use basic auth method using .and().httpBasic()</li>
     </ol>
-    <li></li>
-    <li></li>
 </ol>
 
+
+<h2 align="center">JWT Authentication</h2>
+<ol>
+    <li>JSON WEB Token</li>
+    <li>Configure JWT framework</li>
+    <li>Maven dependency jjwt</li>
+    <li>Check out the configuration at .properties file</li>
+</ol>
+
+<h2 align="center">H2 Database</h2>
+<ol>
+    <li>H2 is in memory database</li>
+    <li>we can access using /h2-console</li>
+    <li>Make Todo Entity and set @Id and @GeneratedValue annotation on id</li>
+    <li>Spring Data will automatically generate the table</li>
+    <li>Create data.sql file and insert some values</li>
+</ol>
 

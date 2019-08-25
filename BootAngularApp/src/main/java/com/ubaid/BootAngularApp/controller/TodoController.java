@@ -3,6 +3,7 @@ package com.ubaid.BootAngularApp.controller;
 import java.net.URI;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,20 +25,27 @@ import com.ubaid.BootAngularApp.service.TService;
 public class TodoController
 {
 	@Autowired
+	@Qualifier("todoService")
 	TService todoService;
+	
+	@Autowired
+	@Qualifier("todoJPAService")
+	TService newService;
+
 	
 	//get all
 	@GetMapping("{userName}/todos")
 	public List<Todo> getAllTodos(@PathVariable String userName)
 	{
-		return todoService.getAllTodos(userName);
+//		return todoService.getAllTodos(userName);
+		return newService.getAllTodos(userName);
 	}
 	
 	//delete one
 	@DeleteMapping("{username}/todos/{id}")
 	public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable int id)
 	{
-		Todo todo = todoService.deleteTodo(username, id);
+		Todo todo = newService.deleteTodo(username, id);
 		if(todo != null)
 			return ResponseEntity.ok().build();
 		return ResponseEntity.notFound().build();
@@ -47,14 +55,14 @@ public class TodoController
 	@GetMapping("{username}/todos/{id}")
 	public Todo getTodo(@PathVariable String username, @PathVariable int id)
 	{
-		return todoService.getTodo(username, id);
+		return newService.getTodo(username, id);
 	}
 	
 	//add
 	@PostMapping("{username}/todos")
 	public ResponseEntity<Todo> addTodo(@PathVariable String username, @RequestBody Todo todo)
 	{
-		todo = todoService.save(username, todo);
+		todo = newService.save(username, todo);
 		if(todo != null)
 		{
 			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(todo.getId()).toUri();
@@ -67,7 +75,7 @@ public class TodoController
 	@PutMapping("{username}/todos")
 	public ResponseEntity<Todo> updateTodo(@PathVariable String username, @RequestBody Todo todo)
 	{
-		todo = todoService.save(username, todo);
+		todo = newService.save(username, todo);
 		if (todo != null)
 		{
 			return ResponseEntity.ok(todo);
