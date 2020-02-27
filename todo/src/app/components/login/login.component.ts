@@ -9,29 +9,25 @@ import { JwtAuthService } from 'src/app/services/auth/jwt-auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit
-{
+export class LoginComponent implements OnInit {
 
-    private username : string = 'ubaid';
-    private password : string = 'test123';
-    private isInValid : boolean = false;
+    public username  = 'ubaid';
+    public password = 'test123';
+    public isInValid = false;
 
-    constructor(private router:Router,
-        private auth : HardCodeAuthService,
-        private basicAuth : BasicAuthenticationService,
-        private jwtAuth : JwtAuthService)
-    {
+    constructor(private router: Router,
+                private auth: HardCodeAuthService,
+                private basicAuth: BasicAuthenticationService,
+                private jwtAuth: JwtAuthService) {
 
     }
 
-    ngOnInit()
-    {
+    ngOnInit() {
 
     }
 
-    public whenClick() : void
-    {
-        console.log("Before: isAuth: " + sessionStorage.getItem(HardCodeAuthService.AUTH));
+    public whenClick(): void {
+        console.log('Before: isAuth: ' + sessionStorage.getItem(HardCodeAuthService.AUTH));
         // if(this.auth.authenticate(this.username, this.password))
         // {
         //     this.isInValid = false;
@@ -49,7 +45,7 @@ export class LoginComponent implements OnInit
         console.log(this.username);
         console.log(this.password);
 
-        //TEST
+        // TEST
         // this.giveAuth();
 
         this.jwtAuth.auth(this.username, this.password).subscribe(
@@ -57,7 +53,7 @@ export class LoginComponent implements OnInit
                 console.log(data);
                 this.isInValid = false;
                 this.router.navigate(['welcome', this.username]);
-                console.log("After: isAuth: " + sessionStorage.getItem(AUTHUSER));
+                console.log('After: isAuth: ' + sessionStorage.getItem(AUTHUSER));
             },
             error => {
                 console.log(error);

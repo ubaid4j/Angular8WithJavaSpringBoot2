@@ -4,15 +4,13 @@ import { Router } from '@angular/router';
 import { TodoService } from 'src/app/services/todoData/todo.service';
 import { BasicAuthenticationService } from 'src/app/services/auth/basic-authentication.service';
 
-export class Todo
-{
+export class Todo {
     constructor(
-        public id : number,
-        public desc : string,
-        public done : boolean,
-        public targetDate : Date
-    )
-    {
+        public id: number,
+        public desc: string,
+        public done: boolean,
+        public targetDate: Date
+    ) {
 
     }
 }
@@ -22,66 +20,67 @@ export class Todo
     templateUrl: './todos.component.html',
     styleUrls: ['./todos.component.css']
 })
-export class TodosComponent implements OnInit
-{
+export class TodosComponent implements OnInit {
+    get info(): string {
+        return this.infoI;
+    }
 
-    private todos : Todo[];
-    private info : string = null;
+    set info(value: string) {
+        this.infoI = value;
+    }
 
-    constructor(private auth : BasicAuthenticationService,
-        private router : Router,
-        private todoService : TodoService)
-    {
+    public todos: Todo[];
+    public infoI: string = null;
+
+    constructor(private auth: BasicAuthenticationService,
+                private router: Router,
+                private todoService: TodoService) {
 
     }
 
-    ngOnInit()
-    {
+    ngOnInit() {
         this.refresh();
     }
 
-    private refresh() : void
-    {
+    private refresh(): void {
         this.todoService.getAllTodos(this.auth.getAuthUser()).subscribe(
             response => {
-                let todo = response as Todo[];
+                const todo = response as Todo[];
                 this.handleResponse(todo);
             }
         );
     }
 
-    private handleResponse(res : Todo[])
-    {
+    handleResponse(res: Todo[]) {
         this.todos = res;
     }
 
-    private deleteTodo(id : number) : void
-    {
+    deleteTodo(id: number): void {
         this.todoService.deleteTodo(this.auth.getAuthUser(), id).subscribe(
             success => {
                 this.refresh();
                 this.info = `Todo of id number ${id} successfully deleted`;
                 this.dropInfo();
             }
-        )
+        );
     }
 
-    private dropInfo() : void
-    {
-        setTimeout(function()
-        {
-            this.info = null;
-            console.log("drop info");
+    dropInfo(): void {
+        setTimeout(function() {
+            this.nullInfo();
+            console.log('drop info');
         }, 5000);
     }
 
-    private udpate(id : number) : void
-    {
-        this.router.navigate(["todos", id])
+     udpate(id: number): void {
+        this.router.navigate(['todos', id]).then();
     }
 
-    private add() : void
-    {
-        this.router.navigate(["todos", -1])
+     add(): void {
+        this.router.navigate(['todos', -1]).then();
+    }
+
+     nullInfo(): void  {
+        this.info = null;
     }
 }

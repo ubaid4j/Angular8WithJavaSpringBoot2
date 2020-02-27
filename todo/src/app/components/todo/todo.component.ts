@@ -11,8 +11,8 @@ import { BasicAuthenticationService } from 'src/app/services/auth/basic-authenti
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
-    private todo: Todo;
-    private buttonName = 'Update';
+    public todo: Todo;
+    public buttonName = 'Update';
 
     constructor(
         private todoSerive: TodoService,
@@ -46,10 +46,10 @@ export class TodoComponent implements OnInit {
         this.todo = todo;
     }
 
-    private log(): void {
+    log(): void {
     }
 
-    private save(): void {
+    save(): void {
         console.log(this.todo);
         console.log(`User ${this.auth.getAuthUser()}`);
         this.todoSerive.save(this.auth.getAuthUser(), this.todo).subscribe(

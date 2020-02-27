@@ -10,16 +10,14 @@ import { BasicAuthenticationService } from 'src/app/services/auth/basic-authenti
 })
 export class HeaderComponent implements OnInit
 {
-    private isLoggedIn : boolean = false;
-    private user : string = "";
+    public isLoggedIn = false;
+    public user = '';
 
-    constructor(private auth : BasicAuthenticationService)
-    {
+    constructor(private auth: BasicAuthenticationService) {
 
     }
 
-    ngOnInit()
-    {
+    ngOnInit() {
         this.user = this.auth.getAuthUser();
         this.isLoggedIn = this.auth.isUserLoggedIn();
     }

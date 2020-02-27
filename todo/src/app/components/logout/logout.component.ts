@@ -10,13 +10,11 @@ import { BasicAuthenticationService } from 'src/app/services/auth/basic-authenti
 })
 export class LogoutComponent implements OnInit {
 
-    constructor(private auth : BasicAuthenticationService)
-    {
+    constructor(private auth: BasicAuthenticationService) {
 
     }
 
-    ngOnInit()
-    {
+    ngOnInit() {
         this.auth.logout();
     }
 
