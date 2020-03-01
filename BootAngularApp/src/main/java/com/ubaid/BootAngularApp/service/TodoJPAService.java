@@ -52,7 +52,7 @@ public class TodoJPAService implements TService
 		}
 		else
 		{
-			repo.update(todo.getDesc(), todo.isDone(), todo.getTargetDate(), todo.getId(), todo.getUserName());
+			repo.update(todo.getDescription(), todo.isDone(), todo.getTargetDate(), todo.getId(), todo.getUserName());
 			return todo;
 		}
 	}

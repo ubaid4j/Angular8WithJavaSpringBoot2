@@ -1,19 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { Todo } from '../todos/todos.component';
-import { TodoService } from 'src/app/services/todoData/todo.service';
+import {Component, OnInit} from '@angular/core';
+import {Todo} from '../todos/todos.component';
+import {TodoService} from 'src/app/services/todoData/todo.service';
 // import { HardCodeAuthService } from 'src/app/services/auth/hard-code-auth.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { BasicAuthenticationService } from 'src/app/services/auth/basic-authentication.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {BasicAuthenticationService} from 'src/app/services/auth/basic-authentication.service';
+import {HttpHeaders} from '@angular/common/http';
 
 @Component({
-  selector: 'app-todo',
-  templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.css']
+    selector: 'app-todo',
+    templateUrl: './todo.component.html',
+    styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
-    public todo: Todo;
+    public todo: Todo = new Todo(null, null, null, null);
     public buttonName = 'Update';
-
+    // httpOptions = {
+    //     headers: new HttpHeaders({
+    //         'Content-Type':  'application/json',
+    //     })
+    // };
     constructor(
         private todoSerive: TodoService,
         private auth: BasicAuthenticationService,
@@ -25,8 +30,10 @@ export class TodoComponent implements OnInit {
     ngOnInit() {
         this.todo = new Todo(null, null, null, null);
         const id = this.route.snapshot.params.id;
+        console.log(id);
+        console.log(id === '-1');
 
-        if (id === -1) {
+        if (id === '-1') {
             this.buttonName = 'Create';
         } else {
             this.getTodo(this.auth.getAuthUser(), id);
@@ -50,8 +57,9 @@ export class TodoComponent implements OnInit {
     }
 
     save(): void {
-        console.log(this.todo);
         console.log(`User ${this.auth.getAuthUser()}`);
+        this.todo.done = false;
+        console.log(this.todo);
         this.todoSerive.save(this.auth.getAuthUser(), this.todo).subscribe(
             response => {
                 console.log(response);

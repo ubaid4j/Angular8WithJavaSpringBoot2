@@ -1,5 +1,3 @@
-insert into todo(id, desc, is_done, target_date, user_name)
-values
-	(1, 'Go to Market', false, sysdate(), 'ubaid'),
-	(2, 'Go to Masjid', false, sysdate(), 'ubaid'),
-	(3, 'Go to School', false, sysdate(), 'ubaid');
+truncate table TODO;
+insert into TODO(ID, DESCRIPTION, IS_DONE, TARGET_DATE, USER_NAME)
+values (1, 'Go to Masjid', 0, '03-Mar-2020', 'ubaid');

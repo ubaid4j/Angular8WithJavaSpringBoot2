@@ -1,6 +1,7 @@
 package com.ubaid.BootAngularApp.controller;
 
 import java.net.URI;
+import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,9 +25,6 @@ import com.ubaid.BootAngularApp.service.TService;
 @CrossOrigin(origins = "http://localhost:4200")
 public class TodoController
 {
-	@Autowired
-	@Qualifier("todoService")
-	TService todoService;
 	
 	@Autowired
 	@Qualifier("todoJPAService")
@@ -38,7 +36,9 @@ public class TodoController
 	public List<Todo> getAllTodos(@PathVariable String userName)
 	{
 //		return todoService.getAllTodos(userName);
-		return newService.getAllTodos(userName);
+		List<Todo> todos = newService.getAllTodos(userName);
+		System.out.println(Arrays.asList(todos));
+		return todos;
 	}
 	
 	//delete one
@@ -46,6 +46,7 @@ public class TodoController
 	public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable int id)
 	{
 		Todo todo = newService.deleteTodo(username, id);
+		System.out.println(todo);
 		if(todo != null)
 			return ResponseEntity.ok().build();
 		return ResponseEntity.notFound().build();
@@ -55,7 +56,9 @@ public class TodoController
 	@GetMapping("{username}/todos/{id}")
 	public Todo getTodo(@PathVariable String username, @PathVariable int id)
 	{
-		return newService.getTodo(username, id);
+		Todo todo = newService.getTodo(username, id);
+		System.out.println(todo);
+		return todo;
 	}
 	
 	//add
@@ -66,6 +69,7 @@ public class TodoController
 		if(todo != null)
 		{
 			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(todo.getId()).toUri();
+			System.out.println(todo);
 			return ResponseEntity.created(uri).build();
 		}
 		return ResponseEntity.unprocessableEntity().build();
@@ -78,6 +82,7 @@ public class TodoController
 		todo = newService.save(username, todo);
 		if (todo != null)
 		{
+			System.out.println(todo);
 			return ResponseEntity.ok(todo);
 		}
 		return ResponseEntity.notFound().build();

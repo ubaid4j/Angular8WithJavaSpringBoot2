@@ -44,22 +44,23 @@ export class LoginComponent implements OnInit {
         // }
         console.log(this.username);
         console.log(this.password);
+        this.router.navigate(['welcome', this.username]);
 
         // TEST
         // this.giveAuth();
 
-        this.jwtAuth.auth(this.username, this.password).subscribe(
-            data => {
-                console.log(data);
-                this.isInValid = false;
-                this.router.navigate(['welcome', this.username]);
-                console.log('After: isAuth: ' + sessionStorage.getItem(AUTHUSER));
-            },
-            error => {
-                console.log(error);
-                this.isInValid = true;
-            }
-        );
+        // this.jwtAuth.auth(this.username, this.password).subscribe(
+        //     data => {
+        //         console.log(data);
+        //         this.isInValid = false;
+        //         this.router.navigate(['welcome', this.username]);
+        //         console.log('After: isAuth: ' + sessionStorage.getItem(AUTHUSER));
+        //     },
+        //     error => {
+        //         console.log(error);
+        //         this.isInValid = true;
+        //     }
+        // );
     }
 
     // private giveAuth()

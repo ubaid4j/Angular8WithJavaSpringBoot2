@@ -2,20 +2,28 @@ package com.ubaid.BootAngularApp.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "todo")
 public class Todo
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private int id;
+	@Column(name="user_name", nullable = true)
 	private String userName;
-	private String desc;
+	@Column(nullable = true, name = "description")
+	private String description;
+	@Column(nullable = true, name="target_date")
 	private Date targetDate;
+	@Column(nullable =  true, name="is_done")
 	private boolean isDone;
 	
 	public Todo()
@@ -25,14 +33,14 @@ public class Todo
 	
 	@Override
 	public String toString() {
-		return "Todo [id=" + id + ", userName=" + userName + ", desc=" + desc + ", targetDate=" + targetDate
+		return "Todo [id=" + id + ", userName=" + userName + ", desc=" + description + ", targetDate=" + targetDate
 				+ ", isDone=" + isDone + "]";
 	}
 
 	public Todo(int id, String userName, String desc, Date targetDate, boolean isDone) {
 		this.id = id;
 		this.userName = userName;
-		this.desc = desc;
+		this.description = desc;
 		this.targetDate = targetDate;
 		this.isDone = isDone;
 	}
@@ -53,12 +61,12 @@ public class Todo
 		this.userName = userName;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String desc) {
+		this.description = desc;
 	}
 
 	public Date getTargetDate() {

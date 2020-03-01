@@ -1,41 +1,39 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { HardCodeAuthService } from './hard-code-auth.service';
-import { map } from 'rxjs/operators';
-import { API_URL } from 'src/app/app.constants';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {map} from 'rxjs/operators';
+import {API_URL} from 'src/app/app.constants';
 
 
-export const AUTHUSER = "authUser";
-export const AUTHTOKEN = "authToken";
+export const AUTHUSER = 'authUser';
+export const AUTHTOKEN = 'authToken';
 
 @Injectable({
     providedIn: 'root'
 })
 export class BasicAuthenticationService {
 
-    private tempUser : string;
-    private tempPassword : string;
-    private tempToken : string;
+    private tempUser: string;
+    private tempPassword: string;
+    private tempToken: string;
 
     constructor(private http: HttpClient) {
 
     }
 
     public createBasicAuthHeaderString(username: string, password: string): string {
-        let authString = "Basic " + window.btoa(username + ":" + password);
-        return authString;
+        return 'Basic ' + window.btoa(username + ':' + password);
     }
 
 
     public executeAuthenticationService(username: string, password: string): Observable<any> {
 
-        let headers = new HttpHeaders({
-            'Authorization' : this.createBasicAuthHeaderString(username, password)
+        const headers = new HttpHeaders({
+            Authorization: this.createBasicAuthHeaderString(username, password)
         });
 
-        let options = {
-            headers: headers
+        const options = {
+            headers
         };
 
         console.log(`${API_URL}/auth/user`, options);
@@ -49,7 +47,7 @@ export class BasicAuthenticationService {
     }
 
     public getAuthUser(): string {
-        return sessionStorage.getItem(AUTHUSER);
+        return 'ubaid';
     }
 
     public getAuthToken(): string {
@@ -65,19 +63,16 @@ export class BasicAuthenticationService {
         sessionStorage.removeItem(AUTHTOKEN);
     }
 
-    //*****************************Temp*********************************/
-    public getTempUser() : string
-    {
+    // *****************************Temp*********************************/
+    public getTempUser(): string {
         return this.tempUser;
     }
 
-    public getTempPassword() : string
-    {
+    public getTempPassword(): string {
         return this.tempPassword;
     }
 
-    public getTempToken() : string
-    {
+    public getTempToken(): string {
         return this.tempToken;
     }
 }
