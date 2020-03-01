@@ -6,12 +6,12 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class BootAngularAppApplication
+public class TodoService
 {
 
 	public static void main(String[] args)
 	{
-		SpringApplication.run(BootAngularAppApplication.class, args);
+		SpringApplication.run(TodoService.class, args);
 	}
 
 }

@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - TodoService",
+            "request": "launch",
+            "mainClass": "com.ubaid.BootAngularApp.TodoService",
+            "projectName": "todo-service"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - BootAngularAppApplication",
             "request": "launch",
             "mainClass": "com.ubaid.BootAngularApp.BootAngularAppApplication"
