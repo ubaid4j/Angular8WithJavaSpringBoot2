@@ -18,3 +18,7 @@
 ### gateway-server
 - Port
   - 8755
+
+### rest-client-service
+- Port
+  - 8100

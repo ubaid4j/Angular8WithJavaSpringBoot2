@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - BootAngularAppApplication",
+            "request": "launch",
+            "mainClass": "com.ubaid.BootAngularApp.BootAngularAppApplication"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-NamingServerApplication<naming-server>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.ubaid.namingserver.NamingServerApplication",
+            "projectName": "naming-server",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-GatewayServerApplication<gateway-server>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.ubaid.gatewayserver.GatewayServerApplication",
+            "projectName": "gateway-server",
+            "args": ""
+        }
+    ]
+}
