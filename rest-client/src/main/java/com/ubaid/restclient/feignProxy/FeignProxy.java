@@ -12,7 +12,7 @@ import java.util.List;
 @RibbonClient(name = "todo-service")
 public interface FeignProxy {
     @GetMapping("todo-service/users/{username}/todos")
-    public List<Todo> getAllTodos(@PathVariable("todos") String username);
+    public List<Todo> getAllTodos(@PathVariable("username") String username);
 
     @GetMapping("todo-service/users/{username}/todos/{id}")
     public Todo getTodo(@PathVariable("username") String username, @PathVariable("id") int id);

@@ -25,6 +25,16 @@
             "mainClass": "com.ubaid.gatewayserver.GatewayServerApplication",
             "projectName": "gateway-server",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-RestClientApplication<rest-client>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.ubaid.restclient.RestClientApplication",
+            "projectName": "rest-client",
+            "args": ""
         }
     ]
 }
