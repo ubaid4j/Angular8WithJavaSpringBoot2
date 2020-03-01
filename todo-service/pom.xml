@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ubaid</groupId>
-	<artifactId>BootAngularApp</artifactId>
+	<artifactId>todo-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>BootAngularApp</name>
-	<description>Spring Boot with Angular 8</description>
+	<name>todo-service</name>
+	<description>todo service</description>
 
 	<properties>
 		<java.version>13</java.version>
@@ -62,7 +62,8 @@
 				</exclusion>
 			</exclusions>
 		</dependency>	
-
+	
+	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>
@@ -75,10 +76,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
-	</dependencies>
-
-
 
 	<build>
 		<plugins>

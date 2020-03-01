@@ -21,4 +21,4 @@
 
 ### rest-client-service
 - Port
-  - 8100
+  - 8080

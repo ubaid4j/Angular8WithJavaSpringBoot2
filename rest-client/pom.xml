@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ubaid</groupId>
-	<artifactId>rest-client</artifactId>
+	<artifactId>rest-client-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>rest-client</name>
+	<name>rest-client-service</name>
 	<description>This is rest client for our micro-services </description>
 
 	<properties>

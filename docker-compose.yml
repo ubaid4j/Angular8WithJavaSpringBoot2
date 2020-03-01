@@ -1,0 +1,93 @@
+version: '3'
+services:
+    rabbitmq:
+        image: rabbitmq:management
+        restart: on-failure
+        expose:
+          - "5672"
+        ports:
+          - 5672:5672
+          - 15672:15672
+        networks: 
+          - sn
+    zipkin:
+        image: openzipkin/zipkin
+        restart: on-failure
+        ports:
+        - "9411:9411"
+        expose:
+        - "9411"
+        networks: 
+        - sn
+    naming-server:
+        build: ./naming-server
+        networks: 
+        - sn
+        expose:
+        - 8761
+        ports:
+        - 8761:8761
+    gateway-server:
+        build: ./gateway-server
+        expose:
+        - 8755
+        ports:
+        - 8755:8755
+        volumes:
+        - ./gateway-server:/volume         
+        networks: 
+        - sn
+        depends_on:
+        - naming-server
+        - zipkin
+        - rabbitmq        
+    rest-client-service:
+        build: ./rest-client
+        expose:
+        - 8080
+        ports:
+        - 8080:8080
+        volumes:
+        - vc1:/tmp         
+        networks: 
+        - sn
+        depends_on:
+        - naming-server
+        - gateway-server
+        - todo-service
+        - zipkin
+        - rabbitmq            
+    todo-service:
+        build: ./todo-service
+        restart: always
+        expose:
+        - 9000
+        ports:
+        - 9000:9000
+        volumes:
+        - vc1:/tmp        
+        networks: 
+        - sn
+        depends_on:
+        - naming-server
+        - gateway-server
+        - zipkin
+        - rabbitmq 
+        - db           
+    db:
+        image: ubaidurehman/oracle:19.3.0-se2
+        restart: always
+        environment:
+            ORACLE_ALLOW_REMOTE: 'true'
+        ports:
+        - '1521:1521'
+        expose:
+        - '1521'
+        volumes:
+        - vc1:/duo
+        networks:
+        - sn
+volumes:
+    vc1:
+networks:
+    sn: {}
