@@ -5,7 +5,9 @@ import com.ubaid.restclient.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -26,7 +28,11 @@ public class TodoController {
     @DeleteMapping("{username}/todos/{id}")
     public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable int id)
     {
-        return service.deleteTodo(username, id);
+        Todo todo = service.deleteTodo(username, id);
+
+        if(todo != null)
+            return ResponseEntity.ok().build();
+        return ResponseEntity.notFound().build();
     }
 
     //get one
@@ -40,13 +46,28 @@ public class TodoController {
     @PostMapping("{username}/todos")
     public ResponseEntity<Todo> addTodo(@PathVariable String username, @RequestBody Todo todo)
     {
-        return service.addTodo(username, todo);
+        todo = service.addTodo(username, todo);
+
+        if(todo != null)
+		{
+			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(todo.getId()).toUri();
+			System.out.println(todo);
+			return ResponseEntity.created(uri).build();
+		}
+		return ResponseEntity.unprocessableEntity().build();
     }
 
     //update
     @PutMapping("{username}/todos")
     public ResponseEntity<Todo> updateTodo(@PathVariable String username, @RequestBody Todo todo)
     {
-        return service.updateTodo(username, todo);
+        todo = service.updateTodo(username, todo);
+        if (todo != null)
+		{
+			System.out.println(todo);
+			return ResponseEntity.ok(todo);
+		}
+		return ResponseEntity.notFound().build();
+
     }
 }
