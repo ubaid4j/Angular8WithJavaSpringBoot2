@@ -1,15 +1,10 @@
-FROM node
-
-WORKDIR /app
-
-ENV PATH /app/node_modules/.bin:$PATH
-
-COPY package.json /app/package.json
-
+### STAGE 1: Build ###
+FROM node AS build
+WORKDIR /usr/src/app
+COPY package.json ./
 RUN npm install
-
-RUN npm install -g @angular/cli
-
-COPY . /app
-
-CMD ng serve --host 0.0.0.0
+COPY . .
+RUN npm run build
+### STAGE 2: Run ###
+FROM nginx:1.17.1-alpine
+COPY --from=build /usr/src/app/dist/todo /usr/share/nginx/html
