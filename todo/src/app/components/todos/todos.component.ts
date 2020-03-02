@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { HardCodeAuthService } from 'src/app/services/auth/hard-code-auth.service';
-import { Router } from '@angular/router';
-import { TodoService } from 'src/app/services/todoData/todo.service';
-import { BasicAuthenticationService } from 'src/app/services/auth/basic-authentication.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {TodoService} from 'src/app/services/todoData/todo.service';
 
 export class Todo {
     constructor(
         public id: number,
-        public desc: string,
+        public description: string,
         public done: boolean,
         public targetDate: Date
     ) {
@@ -21,6 +19,8 @@ export class Todo {
     styleUrls: ['./todos.component.css']
 })
 export class TodosComponent implements OnInit {
+
+    private username = 'ubaid';
     get info(): string {
         return this.infoI;
     }
@@ -32,9 +32,9 @@ export class TodosComponent implements OnInit {
     public todos: Todo[];
     public infoI: string = null;
 
-    constructor(private auth: BasicAuthenticationService,
-                private router: Router,
-                private todoService: TodoService) {
+    constructor(
+        private router: Router,
+        private todoService: TodoService) {
 
     }
 
@@ -43,7 +43,7 @@ export class TodosComponent implements OnInit {
     }
 
     private refresh(): void {
-        this.todoService.getAllTodos(this.auth.getAuthUser()).subscribe(
+        this.todoService.getAllTodos(this.username).subscribe(
             response => {
                 const todo = response as Todo[];
                 this.handleResponse(todo);
@@ -52,11 +52,12 @@ export class TodosComponent implements OnInit {
     }
 
     handleResponse(res: Todo[]) {
+        console.log(res);
         this.todos = res;
     }
 
     deleteTodo(id: number): void {
-        this.todoService.deleteTodo(this.auth.getAuthUser(), id).subscribe(
+        this.todoService.deleteTodo(this.username, id).subscribe(
             success => {
                 this.refresh();
                 this.info = `Todo of id number ${id} successfully deleted`;
@@ -72,15 +73,15 @@ export class TodosComponent implements OnInit {
         }, 5000);
     }
 
-     udpate(id: number): void {
+    udpate(id: number): void {
         this.router.navigate(['todos', id]).then();
     }
 
-     add(): void {
+    add(): void {
         this.router.navigate(['todos', -1]).then();
     }
 
-     nullInfo(): void  {
+    nullInfo(): void {
         this.info = null;
     }
 }

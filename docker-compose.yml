@@ -74,6 +74,19 @@ services:
         - gateway-server
         - zipkin
         - rabbitmq 
+    todo-client:
+        build: ./todo
+        volumes:
+        - vc1:/app
+        - vc1:/app/node_modules
+        networks:
+        - sn
+        expose:
+        - 4200
+        ports:
+        - 4200:4200
+        depends_on:
+        - rest-client-service
 volumes:
     vc1:
 networks:

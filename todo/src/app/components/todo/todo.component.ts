@@ -1,10 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Todo} from '../todos/todos.component';
 import {TodoService} from 'src/app/services/todoData/todo.service';
-// import { HardCodeAuthService } from 'src/app/services/auth/hard-code-auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {BasicAuthenticationService} from 'src/app/services/auth/basic-authentication.service';
-import {HttpHeaders} from '@angular/common/http';
 
 @Component({
     selector: 'app-todo',
@@ -14,14 +11,9 @@ import {HttpHeaders} from '@angular/common/http';
 export class TodoComponent implements OnInit {
     public todo: Todo = new Todo(null, null, null, null);
     public buttonName = 'Update';
-    // httpOptions = {
-    //     headers: new HttpHeaders({
-    //         'Content-Type':  'application/json',
-    //     })
-    // };
+    private username = 'ubaid';
     constructor(
         private todoSerive: TodoService,
-        private auth: BasicAuthenticationService,
         private route: ActivatedRoute,
         private router: Router
     ) {
@@ -36,7 +28,7 @@ export class TodoComponent implements OnInit {
         if (id === '-1') {
             this.buttonName = 'Create';
         } else {
-            this.getTodo(this.auth.getAuthUser(), id);
+            this.getTodo(this.username, id);
         }
     }
 
@@ -57,10 +49,10 @@ export class TodoComponent implements OnInit {
     }
 
     save(): void {
-        console.log(`User ${this.auth.getAuthUser()}`);
+        console.log(`User: ${this.username}`);
         this.todo.done = false;
         console.log(this.todo);
-        this.todoSerive.save(this.auth.getAuthUser(), this.todo).subscribe(
+        this.todoSerive.save(this.username, this.todo).subscribe(
             response => {
                 console.log(response);
                 // noinspection JSIgnoredPromiseFromCall

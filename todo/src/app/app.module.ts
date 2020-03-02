@@ -13,7 +13,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { TodoComponent } from './components/todo/todo.component';
-import { HttpIntercepterService } from './services/http/http-intercepter.service';
 
 
 @NgModule({
@@ -36,7 +35,6 @@ import { HttpIntercepterService } from './services/http/http-intercepter.service
     HttpClientModule
   ],
   providers: [
-       {provide : HTTP_INTERCEPTORS, useClass : HttpIntercepterService, multi : true}
     ],
   bootstrap: [AppComponent]
 })
