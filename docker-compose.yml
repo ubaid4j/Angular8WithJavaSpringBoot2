@@ -82,9 +82,9 @@ services:
         networks:
         - sn
         expose:
-        - 4201
+        - 4200
         ports:
-        - 4200:4201
+        - 4200:4200
         depends_on:
         - rest-client-service
 volumes:
