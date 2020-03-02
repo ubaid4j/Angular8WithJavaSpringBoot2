@@ -29,7 +29,7 @@
 # How to run
 - Set up database
   - do ``` git clone https://github.com/UbaidurRehman1/database_docker_compose.git ```
-  - set up oracle db as mention
+  - set up oracle db as mention above repo
     - After running ``` run.sh ``` execute all the commadns given below
   - wait till Oracle database comes to up
 - Now execute ``` run.sh ``` 
