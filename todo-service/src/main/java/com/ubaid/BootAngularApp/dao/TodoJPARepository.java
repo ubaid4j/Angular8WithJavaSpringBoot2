@@ -22,7 +22,7 @@ public interface TodoJPARepository extends JpaRepository<Todo, Integer>
 	int delete(@Param("id") int id, @Param("userName") String userName);
 
 	@Modifying
-	@Query(value = "update Todo set desc = :desc, is_done = :isDone, target_date = :targetDate where id = :id and user_name = :userName", nativeQuery = true)
+	@Query(value = "update Todo set description = :desc, is_done = :isDone, target_date = :targetDate where id = :id and user_name = :userName", nativeQuery = true)
 	int update(@Param("desc") String desc, @Param("isDone") boolean isDone, @Param("targetDate") Date date, @Param("id") int id, @Param("userName") String userName);
 	
 	@Query(value = "select * from Todo where id = :id and user_name = :username", nativeQuery = true)

@@ -1,4 +1,6 @@
 ##-----------------------Adding network-------------------------##
+## -> Creating a network 
+## -> then adding oracledb_db_1 in this network
 docker network create dbnet
 docker network connect dbnet oracledb_db_1
 ##----------------------Ending Adding network-------------------##

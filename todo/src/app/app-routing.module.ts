@@ -8,7 +8,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { TodoComponent } from './components/todo/todo.component';
 
 const routes: Routes = [
-    { path: '', component: TodoComponent },
+    { path: '', component: TodosComponent },
     { path: 'login', component: LoginComponent },
     { path: 'welcome/:name', component: WelcomeComponent},
     { path: 'todos/:id', component: TodoComponent, },
