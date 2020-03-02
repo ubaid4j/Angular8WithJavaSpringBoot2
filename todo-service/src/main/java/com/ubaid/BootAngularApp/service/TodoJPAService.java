@@ -27,7 +27,7 @@ public class TodoJPAService implements TService
 	@Transactional
 	public Todo deleteTodo(String username, int id)
 	{
-		Todo todo = repo.getOne(id);
+		Todo todo = getTodo(username, id);
 		int result = repo.delete(id, username);
 		if(result > 0)
 			return todo;
