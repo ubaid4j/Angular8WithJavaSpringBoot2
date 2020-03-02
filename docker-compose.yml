@@ -84,7 +84,7 @@ services:
         expose:
         - 4201
         ports:
-        - 4201:4200
+        - 4200:4201
         depends_on:
         - rest-client-service
 volumes:
