@@ -63,6 +63,25 @@
 			</exclusions>
 		</dependency>	
 	
+
+			<!-- for putting a trace to a request -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+
+		<!-- with working with zipkin-->
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+		</dependency>
+
+		<!--connecting with rabbit mq-->
+		<dependency>
+	        <groupId>org.springframework.cloud</groupId>
+	        <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+	    </dependency>
+
 	</dependencies>
 
 	<dependencyManagement>

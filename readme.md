@@ -8,7 +8,7 @@
 ### todo-service
 - Connected with Oracle DB 19
 - Port
-  - 9000
+  - 9001
 
 
 ### naming-server
