@@ -4,93 +4,105 @@ services:
         image: rabbitmq:management
         restart: on-failure
         expose:
-          - "5672"
+            - "5672"
         ports:
-          - 5672:5672
-          - 15672:15672
-        networks: 
-          - sn
+            - 5672:5672
+            - 15672:15672
+        networks:
+            - sn
     zipkin:
         image: openzipkin/zipkin
         restart: on-failure
         ports:
-        - "9411:9411"
+            - "9411:9411"
         expose:
-        - "9411"
-        networks: 
-        - sn
+            - "9411"
+        networks:
+            - sn
     naming-server:
         build: ./naming-server
-        networks: 
-        - sn
+        networks:
+            - sn
         expose:
-        - 8761
+            - 8761
         ports:
-        - 8761:8761
+            - 8761:8761
     gateway-server:
         build: ./gateway-server
         expose:
-        - 8755
+            - 8755
         ports:
-        - 8755:8755
+            - 8755:8755
         volumes:
-        - ./gateway-server:/volume         
-        networks: 
-        - sn
+            - ./gateway-server:/volume
+        networks:
+            - sn
         depends_on:
-        - naming-server
-        - zipkin
-        - rabbitmq        
+            - naming-server
+            - zipkin
+            - rabbitmq
     rest-client-service:
         build: ./rest-client
         expose:
-        - 8080
+            - 8080
         ports:
-        - 8080:8080
+            - 8080:8080
         volumes:
-        - vc1:/tmp         
-        networks: 
-        - sn
+            - vc1:/tmp
+        networks:
+            - sn
         depends_on:
-        - naming-server
-        - gateway-server
-        - todo-service
-        - zipkin
-        - rabbitmq            
+            - naming-server
+            - gateway-server
+            - todo-service
+            - zipkin
+            - rabbitmq
     todo-service:
         build: ./todo-service
         restart: always
         expose:
-        - 9001
+            - 9001
         ports:
-        - 9001:9001
+            - 9001:9001
         volumes:
-        - vc1:/tmp        
-        networks: 
-        - sn
-        - dbnet
+            - vc1:/tmp
+        networks:
+            - sn
         depends_on:
-        - naming-server
-        - gateway-server
-        - zipkin
-        - rabbitmq 
+            - naming-server
+            - gateway-server
+            - zipkin
+            - rabbitmq
     todo-client:
         build: ./todo
         volumes:
-        - vc1:/app
-        - vc1:/app/node_modules
+            - vc1:/app
+            - vc1:/app/node_modules
         networks:
-        - sn
+            - sn
         expose:
-        - 4200
+            - 4200
         ports:
-        - 4200:80
+            - 4200:80
         depends_on:
-        - rest-client-service
+            - rest-client-service
+    db:
+        image: mysql
+        restart: always
+        environment:
+            MYSQL_DATABASE: 'db'
+            MYSQL_USER: 'root'
+            MYSQL_PASSWORD: 'password'
+            MYSQL_ROOT_PASSWORD: 'password'
+        ports:
+            - '3307:3306'
+        expose:
+            - '3307'
+        volumes:
+            - vc1:/var/lib/mysql
+        networks:
+            - sn
 volumes:
     vc1:
 networks:
     sn: {}
-    dbnet:
-        external: 
-            name: dbnet

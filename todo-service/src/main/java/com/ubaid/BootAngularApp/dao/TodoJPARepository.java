@@ -14,18 +14,18 @@ import com.ubaid.BootAngularApp.entity.Todo;
 @Repository
 public interface TodoJPARepository extends JpaRepository<Todo, Integer>
 {
-	@Query(value = "select * from Todo where user_name like :userName", nativeQuery = true)
+	@Query(value = "select * from todo where user_name like :userName", nativeQuery = true)
 	List<Todo> findAllByUserName(@Param("userName") String userName);
 	
 	@Modifying
-	@Query(value = "delete from Todo where id = :id and user_name = :userName", nativeQuery = true)
+	@Query(value = "delete from todo where id = :id and user_name = :userName", nativeQuery = true)
 	int delete(@Param("id") int id, @Param("userName") String userName);
 
 	@Modifying
-	@Query(value = "update Todo set description = :desc, is_done = :isDone, target_date = :targetDate where id = :id and user_name = :userName", nativeQuery = true)
+	@Query(value = "update todo set description = :desc, is_done = :isDone, target_date = :targetDate where id = :id and user_name = :userName", nativeQuery = true)
 	int update(@Param("desc") String desc, @Param("isDone") boolean isDone, @Param("targetDate") Date date, @Param("id") int id, @Param("userName") String userName);
 	
-	@Query(value = "select * from Todo where id = :id and user_name = :username", nativeQuery = true)
+	@Query(value = "select * from todo where id = :id and user_name = :username", nativeQuery = true)
 	Todo getTodo(@Param("id") int id, @Param("username") String username);
 	
 }
