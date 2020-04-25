@@ -68,7 +68,6 @@ services:
             - vc1:/tmp
         networks:
             - sn
-            - dbnet
         depends_on:
             - naming-server
             - gateway-server

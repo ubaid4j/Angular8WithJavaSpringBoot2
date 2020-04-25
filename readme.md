@@ -27,6 +27,7 @@
 - http://localhost:9411
 
 # How to run
+- Make sure you have Docker v19
 - Execute ``` run.sh ``` 
 - You can access application using 
   - http://localhost:4200
